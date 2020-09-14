@@ -1,5 +1,10 @@
 # Compile-time TRIE based string matcher (C++11)
 
+Upgraded from [original library](https://github.com/smilingthax/cttrie) written by Tobias Hoffmann.
+
+Using C++17 std::string_view and std::index_sequence.
+
+
 Usage:
 
 ```
@@ -19,10 +24,4 @@ Usage:
 * compile with optimization enabled!
 * cases may return a value (see e.g. test_cttrie.cpp)
   -> return types must match! (deduced from error case)
-
-#### => [Slides](https://smilingthax.github.io/slides/cttrie/)
-
-Copyright (c) 2016 Tobias Hoffmann
-
-License: http://opensource.org/licenses/MIT
-
+* using [cmake](https://cmake.org/) and [conan](https://conan.io/) to build/run tests.

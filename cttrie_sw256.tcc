@@ -1,3 +1,4 @@
+#include <utility>
 
 #define X16(p) \
   X(p,0) SEP X(p,1) SEP X(p,2) SEP X(p,3) SEP X(p,4) SEP X(p,5) SEP X(p,6) SEP X(p,7) SEP \
@@ -8,7 +9,7 @@
   X16(8) SEP X16(9) SEP X16(a) SEP X16(b) SEP X16(c) SEP X16(d) SEP X16(e) SEP X16(f)
 
 // or:  typedef decltype(make_index_sequence<256>()) base_seq;
-typedef index_sequence<
+typedef std::index_sequence<
 #define X(p,q) 0x ## p ## q
 #define SEP ,
   XBLOCK
@@ -28,7 +29,7 @@ constexpr nil select(...)
 { return {}; }
 
 template <typename TrieNode,unsigned int... Is>
-constexpr auto mkidx(TrieNode trie,index_sequence<Is...>)
+constexpr auto mkidx(TrieNode trie,std::index_sequence<Is...>)
   -> type_array<decltype(select<Is>(trie))...>
 { return {}; }
 

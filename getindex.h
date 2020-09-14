@@ -11,19 +11,19 @@ namespace detail {
   template <unsigned int> struct int_c {};
 
   template <unsigned int I>
-  constexpr void *get_index_impl(int_c<I>) // invalid index
+  constexpr auto get_index_impl([[maybe_unused]] int_c<I> _i) -> void* // invalid index
   {
     return {};
   }
 
   template <typename T0,typename... Ts>
-  constexpr T0&& get_index_impl(int_c<0>,T0&& t0,Ts&&... ts)
+  constexpr auto get_index_impl([[maybe_unused]] int_c<0> _i,T0&& t0,Ts&&... ts) -> T0&&
   {
     return (T0&&)t0;
   }
 
   template <unsigned int I,typename T0,typename... Ts>
-  constexpr auto get_index_impl(int_c<I>,T0&& t0,Ts&&... ts)
+  constexpr auto get_index_impl([[maybe_unused]] int_c<I> _,T0&& t0,Ts&&... ts)
     -> decltype(get_index_impl(int_c<I-1>(),(Ts&&)ts...))
   {
     return get_index_impl(int_c<I-1>(),(Ts&&)ts...);

@@ -1,0 +1,7 @@
+[requires]
+catch2/2.13.0
+
+[generators]
+cmake
+
+[options]
