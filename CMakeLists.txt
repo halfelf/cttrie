@@ -12,6 +12,7 @@ endif ()
 set(TEST_SOURCES
     test/catch_main.cpp
     test/test_cttrie.cpp
-    )
+)
 add_executable(cttrie_test ${TEST_SOURCES})
 
+target_include_directories(cttrie_test PRIVATE ${PROJECT_SOURCE_DIR})

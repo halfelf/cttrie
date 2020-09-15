@@ -1,35 +1,32 @@
-#include "cttrie.h"
-#include <stdio.h>
-#include "lc_stringview.h"
+#include <catch2/catch.hpp>
+#include <cttrie.h>
+#include <string>
 
-int main(int argc,char **argv)
-{
-  const char *str=(argc>1) ? argv[1] : "abc";
+void test_trie_case_macro(const char* raw, std::string& s) {
+    TRIE(raw)
+        s = raw;
+    CASE("Rosten")
+        s = "Rosten!";
+    CASE("Raben")
+        s = "Raben@";
+    CASE("Rasen")
+        s = "Rasen#";
+    CASE("Rasten")
+        s = "Rasten$";
+    CASE("Raster")
+        s = "Raster%";
+    CASE("Rastender")
+        s = "Rastender^";
+    CASE("Raban")
+        s = "Raban&";
+    ENDTRIE;
+}
 
-  printf("%d\n",
-    TRIE2(lc_stringview,str) return -1;
-    CASE("abc") return 0;
-    CASE("bcd") return 1;
-    ENDTRIE
-  );
+TEST_CASE("Test TRIE/CASE macro", "") {
+    std::string target;
+    test_trie_case_macro("abc", target);
+    REQUIRE(target == "abc");
 
-  TRIE(str)
-    printf("E\n");
-  CASE("Rosten")
-    printf("6\n");
-  CASE("Raben")
-    printf("0\n");
-  CASE("Rasen")
-    printf("1\n");
-  CASE("Rasten")
-    printf("2\n");
-  CASE("Raster")
-    printf("3\n");
-  CASE("Rastender")
-    printf("4\n");
-  CASE("Raban")
-    printf("5\n");
-  ENDTRIE;
-
-  return 0;
+    test_trie_case_macro("Rastender", target);
+    REQUIRE(target == "Rastender^");
 }
