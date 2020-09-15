@@ -17,7 +17,7 @@ Usage:
   CASE("abc")
     ... str matches abc ...
   CASE("ad")
-    ... etc
+    ... etc  // NOTE: DO NOT return in CASE
   ENDTRIE;   // <- trailing semicolon!
 ```
 
