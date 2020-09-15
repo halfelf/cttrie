@@ -1,4 +1,4 @@
-# Compile-time TRIE based string matcher (C++11)
+# Compile-time TRIE based string matcher (C++17)
 
 Upgraded from [original library](https://github.com/smilingthax/cttrie) written by Tobias Hoffmann.
 
